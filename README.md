@@ -176,6 +176,7 @@ CONFIG_IP_NF_NAT=y
 ```bash
  sudo docker run hello-world1
 ```
+### 示例输出验证
 ```
 $ docker run hello-world
 
@@ -205,4 +206,4 @@ $ docker images hello-world
 REPOSITORY   TAG     IMAGE ID      SIZE
 hello-world  latest  feb5d9fea6a5  13256
 ```
- 
+ ### 祝你成功~
