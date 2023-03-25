@@ -107,7 +107,6 @@ CONFIG_NETFILTER_XT_MATCH_STRING=y
 CONFIG_NETFILTER_XT_MATCH_TCPMSS=y
 CONFIG_NETFILTER_XT_MATCH_TIME=y
 CONFIG_NETFILTER_XT_MATCH_U32=y
-CONFIG_IP_NF_NAT=y
 CONFIG_IP_NF_TARGET_MASQUERADE=y
 CONFIG_IP6_NF_IPTABLES=y
 CONFIG_IP6_NF_MANGLE=y
@@ -120,21 +119,18 @@ CONFIG_MACVLAN=y
 CONFIG_VETH=y
 CONFIG_POSIX_MQUEUE=y
 CONFIG_NET_CORE=y
-CONFIG_VETH=y
-CONFIG_BRIDGE=y
 CONFIG_NETFILTER=y
-CONFIG_BRIDGE_NETFILTER=y
 CONFIG_NF_CONNTRACK=y
 CONFIG_NF_NAT_IPV4=y
 CONFIG_IP_NF_IPTABLES=y
 CONFIG_IP_NF_FILTER=y
-CONFIG_IP_NF_TARGET_MASQUERADE=y
 CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y
 CONFIG_NETFILTER_XT_MATCH_CONNTRACK=y
 CONFIG_IP_VS=y
 CONFIG_NETFILTER_ADVANCED=y
 CONFIG_NETFILTER_XT_MATCH_IPVS=y
 CONFIG_IP_NF_NAT=y
+
 ```
 然后编译出boot.img打包
 
@@ -150,10 +146,10 @@ CONFIG_IP_NF_NAT=y
 ```bash
  sudo apt-get update
  sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+ ca-certificates \
+ curl \
+ gnupg \
+ lsb-release
  ```
  添加 Docker 的官方 GPG 密钥：
 ```bash
@@ -174,11 +170,11 @@ CONFIG_IP_NF_NAT=y
 ```
 - hello-world 通过运行映像来验证 Docker 引擎是否已正确安装。
 ```bash
- sudo docker run hello-world1
+sudo docker run hello-world
 ```
 ### 示例输出验证
 ```
-$ docker run hello-world
+$ sudo docker run hello-world
 
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
@@ -202,7 +198,7 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
 
-$ docker images hello-world
+$ sudo docker images hello-world
 REPOSITORY   TAG     IMAGE ID      SIZE
 hello-world  latest  feb5d9fea6a5  13256
 ```
