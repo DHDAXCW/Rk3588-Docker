@@ -2,7 +2,9 @@
 - 瑞芯微提供的sdk，版本是 RK3588-linux-Beta-202204151412.tar
 - 开发板：rk3588 
 - 内核版本 5.10.66
+- 最新内核 5.10.110
 - sdk：RK3588-linux-Beta-202204151412
+- sdk：RK3588-linux-rkr3.6
 - 编译系统：Ubuntu20.04-22.04
 - rootfs：Ubuntu20.04 ARM64位 暂时不提供源代码了
 
