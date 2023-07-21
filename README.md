@@ -140,35 +140,31 @@ CONFIG_IP_NF_NAT=y
 ### 卸载旧版本
 - 旧版本的 Docker 被称为docker,docker.io或docker-engine. 如果安装了这些，请卸载它们：
 
- ```bash
- sudo apt-get remove docker docker-engine docker.io containerd runc
- ```
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
 ### 设置存储库
 - 更新apt包索引并安装包以允许apt通过 HTTPS 使用存储库：
 ```bash
- sudo apt-get update
- sudo apt-get install \
- ca-certificates \
- curl \
- gnupg \
- lsb-release
- ```
- 添加 Docker 的官方 GPG 密钥：
+sudo apt-get update -y
+sudo apt-get install -y ca-certificates curl gnupg lsb-release
+```
+添加 Docker 的官方 GPG 密钥：
 ```bash
- sudo mkdir -p /etc/apt/keyrings
- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
- ```
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
 - 使用以下命令设置存储库：
 ```bash
- echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
- ```
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
 ### 安装 Docker
 - 更新apt包索引，安装最新版本的 Docker Engine、containerd 和 Docker Compose，或者进入下一步安装特定版本：
 ```bash
- sudo apt-get update
- sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 - hello-world 通过运行映像来验证 Docker 引擎是否已正确安装。
 ```bash
