@@ -61,4 +61,58 @@ $ sudo docker images hello-world
 REPOSITORY   TAG     IMAGE ID      SIZE
 hello-world  latest  feb5d9fea6a5  13256
 ```
- ### 祝你成功~
+- 跑到这里就验证成功了。
+
+## 玩转Jellyfin
+
+- 首先特别感谢[nyanmisaka](https://github.com/nyanmisaka)支持了RK3588平台在Jellyfin中支持的视频硬件 具体详见：https://www.bilibili.com/read/cv28664442
+
+### 开始工作
+```bash
+执行命令：docker pull nyanmisaka/jellyfin:latest-rockchip
+
+root@d:~# docker pull nyanmisaka/jellyfin:latest-rockchip
+latest-rockchip: Pulling from nyanmisaka/jellyfin
+24e221e92a36: Pull complete
+9d62c17e62ce: Pull complete
+08fa4394ed6f: Pull complete
+b8f89987d278: Pull complete
+335f5d79b415: Pull complete
+Digest: sha256:ad89f75081e8d8c16e46c1b0c7df06c5681d15a89a322deb1a22defa35ce1143
+Status: Downloaded newer image for nyanmisaka/jellyfin:latest-rockchip
+docker.io/nyanmisaka/jellyfin:latest-rockchip
+以上安装完成，接着执行下面代码：
+docker run -d \
+--name jellyfin \
+--privileged \
+--net=host \
+--restart=unless-stopped \
+--volume /path/to/config:/config \
+--volume /path/to/cache:/cache \
+--volume /path/to/media:/media \
+`for dev in dri dma_heap mali0 rga mpp_service \
+iep mpp-service vpu_service vpu-service \
+hevc_service hevc-service rkvdec rkvenc vepu h265e ; do \
+[ -e "/dev/$dev" ] && echo " --device /dev/$dev"; \
+done` \
+nyanmisaka/jellyfin:latest-rockchip
+
+输出如下：
+root@d:~# docker run -d \
+--name jellyfin \
+--privileged \
+--net=host \
+--restart=unless-stopped \
+--volume /path/to/config:/config \
+--volume /path/to/cache:/cache \
+--volume /path/to/media:/media \
+`for dev in dri dma_heap mali0 rga mpp_service \
+iep mpp-service vpu_service vpu-service \
+hevc_service hevc-service rkvdec rkvenc vepu h265e ; do \
+[ -e "/dev/$dev" ] && echo " --device /dev/$dev"; \
+done` \
+nyanmisaka/jellyfin:latest-rockchip
+acb4b0c9b3fc712c6b6689d48577cca3d03418340885231e00da52fda7208696
+root@d:~#
+表示安装成功
+```
